@@ -29,7 +29,8 @@ async function convertTextToMp3(text) {
   const [response] = await client.synthesizeSpeech(request)
 
   //return audio content
-  return response.audioContent;
+  return response;
+  //.audioContent;//.toString();
 }
 
 /*
@@ -46,8 +47,9 @@ Requests take the form: GET /tts?text=example-text
 */
 app.get('/tts', (req, res) => {
   const text = req.query.text;
-  textToSpeech(text).then(result=> {
-    res.send(result);
+  textToSpeech(text).
+  then(result=> {
+      res.send(result);
   });
 });
 
